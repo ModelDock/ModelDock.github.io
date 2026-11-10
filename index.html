@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ModelDock Documentation | Universal Local AI Docking Station</title>
+  <meta name="description" content="Official documentation for ModelDock - The Universal Local AI Docking Station & Native Windows Platform. Zero daemon, ~35MB RAM footprint, Hugging Face & Ollama integration.">
+  <link rel="icon" type="image/svg+xml" href="./assets/images/logo.svg">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/prism.css">
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header class="top-header">
+    <div class="brand-wrapper">
+      <button id="menu-toggle" class="icon-btn menu-toggle" aria-label="Toggle navigation menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <a href="./index.html" style="display:flex;align-items:center;gap:0.75rem;text-decoration:none;">
+        <img src="./assets/images/logo.svg" alt="ModelDock Logo" class="brand-logo">
+        <span class="brand-title">ModelDock <span class="brand-badge">v1.0.0</span></span>
+      </a>
+    </div>
+
+    <div class="header-center">
+      <button class="search-trigger" aria-label="Search Documentation">
+        <div class="search-trigger-content">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span>Search documentation...</span>
+        </div>
+        <kbd class="kbd-shortcut">Ctrl K</kbd>
+      </button>
+    </div>
+
+    <div class="header-actions">
+      <a href="./getting-started.html" class="nav-link">Get Started</a>
+      <a href="./api-reference.html" class="nav-link">API</a>
+      <button id="theme-toggle" class="icon-btn" title="Toggle color theme">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="icon-btn" title="GitHub Repository">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
+
+  <!-- Documentation Layout -->
+  <div class="doc-container">
+    
+    <!-- Left Navigation Sidebar -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-group">
+        <div class="sidebar-heading">Getting Started</div>
+        <ul class="sidebar-list">
+          <li class="sidebar-item">
+            <a href="./index.html" class="sidebar-link active">
+              <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              </svg>
+              Overview & Intro
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a href="./getting-started.html" class="sidebar-link">
+              <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+              Quick Start & Install
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a href="./features.html" class="sidebar-link">
+              <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              Core Features
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-group">
+        <div class="sidebar-heading">Model Engine & Hub</div>
+        <ul class="sidebar-list">
+          <li class="sidebar-item">
+            <a href="./model-hub.html" class="sidebar-link">
+              <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              Model Hub & Downloads
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a href="./hardware-acceleration.html" class="sidebar-link">
+              <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                <rect x="9" y="9" width="6" height="6"></rect>
+                <line x1="9" y1="1" x2="9" y2="4"></line>
+                <line x1="15" y1="1" x2="15" y2="4"></line>
+                <line x1="9" y1="20" x2="9" y2="23"></line>
+                <line x1="15" y1="20" x2="15" y2="23"></line>
+                <line x1="20" y1="9" x2="23" y2="9"></line>
+                <line x1="20" y1="14" x2="23" y2="14"></line>
+                <line x1="1" y1="9" x2="4" y2="9"></line>
+                <line x1="1" y1="14" x2="4" y2="14"></line>
+              </svg>
+              Hardware Acceleration
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-group">
+        <div class="sidebar-heading">Developer API</div>
+        <ul class="sidebar-list">
+          <li class="sidebar-item">
+            <a href="./api-reference.html" class="sidebar-link">
+              <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+              OpenAI Local API (/v1)
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a href="./rest-endpoints.html" class="sidebar-link">
+              <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+              REST Endpoints Reference
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-group">
+        <div class="sidebar-heading">Architecture & Support</div>
+        <ul class="sidebar-list">
+          <li class="sidebar-item">
+            <a href="./architecture.html" class="sidebar-link">
+              <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+              Architecture & Design
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a href="./faq.html" class="sidebar-link">
+              <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+              FAQ & Troubleshooting
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="doc-content">
+      
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="hero-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          Next-Generation Local AI Platform
+        </div>
+        <h1 class="hero-title">
+          Universal Local AI Docking Station<br>
+          <span class="hero-gradient">Fast, Featherlight & Daemon-Free</span>
+        </h1>
+        <p class="hero-subtitle">
+          Run any open-source AI model locally on CPU & GPU. Connects Hugging Face Hub and Ollama under one roof with resumable downloads, hardware acceleration, and ultra-low ~35 MB RAM footprint.
+        </p>
+        <div class="hero-cta-group">
+          <a href="./getting-started.html" class="btn btn-primary">
+            Quick Start Guide
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <a href="./api-reference.html" class="btn btn-secondary">Explore OpenAI API</a>
+        </div>
+      </section>
+
+      <!-- Key Advantages Grid -->
+      <h2 id="why-modeldock">Why ModelDock?</h2>
+      <p>
+        Most local AI software bundles heavy Chromium or Electron runtimes, consuming <strong>600 MB to 1.5 GB of RAM</strong> before you even load model weights. Other tools force developers into isolated silos (either strictly Ollama commands or manual unorganized GGUF downloads).
+      </p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+            </svg>
+          </div>
+          <h3>~35 MB RAM Footprint</h3>
+          <p>Native Edge WebView2 runtime and async FastAPI architecture uses ~95% less RAM than Electron apps, leaving maximum VRAM/RAM for models.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+              <line x1="7" y1="2" x2="7" y2="22"></line>
+              <line x1="17" y1="2" x2="17" y2="22"></line>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <line x1="2" y1="7" x2="7" y2="7"></line>
+              <line x1="2" y1="17" x2="7" y2="17"></line>
+              <line x1="17" y1="17" x2="22" y2="17"></line>
+              <line x1="17" y1="7" x2="22" y2="7"></line>
+            </svg>
+          </div>
+          <h3>Zero Daemon Dependency</h3>
+          <p>Bundles standalone high-performance <code>llama.cpp</code> inference server binaries. No external Ollama background services or Docker daemons needed.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            </svg>
+          </div>
+          <h3>True Pause & Resume</h3>
+          <p>Streams multi-gigabyte GGUF models from Hugging Face Hub using HTTP Range chunk headers. Pause anytime without losing already downloaded bytes.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </div>
+          <h3>OpenAI-Compatible Local API</h3>
+          <p>Instant drop-in local endpoint (<code>http://localhost:7860/v1</code>) for Cursor, VS Code Continue, OpenWebUI, Cline, LangChain, and AutoGen.</p>
+        </div>
+      </div>
+
+      <!-- RAM Comparison Table -->
+      <h2 id="comparison">Memory Footprint Comparison</h2>
+      <p>ModelDock prioritizes system efficiency so your hardware resources are devoted to model reasoning rather than UI chrome:</p>
+      
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Platform / Runtime</th>
+              <th>Idle RAM Usage</th>
+              <th>Daemon Required?</th>
+              <th>HF + Ollama Unified?</th>
+              <th>Resumable Downloads</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>⚓ ModelDock</strong></td>
+              <td><span style="color:var(--accent-emerald);font-weight:600;">~35 MB</span></td>
+              <td><span style="color:var(--accent-emerald);">No (Standalone)</span></td>
+              <td><span style="color:var(--accent-emerald);">Yes</span></td>
+              <td><span style="color:var(--accent-emerald);">Yes (HTTP Range)</span></td>
+            </tr>
+            <tr>
+              <td>Electron-based AI UIs</td>
+              <td>650 MB - 1.2 GB</td>
+              <td>Often Yes</td>
+              <td>Partial</td>
+              <td>Varies</td>
+            </tr>
+            <tr>
+              <td>Browser Tabs (Heavy)</td>
+              <td>350 MB - 700 MB</td>
+              <td>External Server</td>
+              <td>Varies</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Ollama CLI / Desktop</td>
+              <td>~80 MB (UI extra)</td>
+              <td>Yes (System Service)</td>
+              <td>Ollama Only</td>
+              <td>Layered</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Quick 1-Click Installation Code -->
+      <h2 id="quick-install">Quick 1-Click Launch</h2>
+      <p>Clone the repository or download the release package, then execute:</p>
+
+      <div class="code-block-wrapper">
+        <div class="code-header">
+          <span>Windows Batch / Console</span>
+          <button class="copy-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            Copy
+          </button>
+        </div>
+        <pre><code class="language-bash"># Launch native desktop app (Edge WebView2)
+Launch-Desktop.bat
+
+# Or run the browser studio interface
+run.bat</code></pre>
+      </div>
+
+      <div class="callout callout-info">
+        <div class="callout-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          Windows Desktop Registration
+        </div>
+        <p>To register ModelDock in your Windows Start Menu, create desktop shortcuts, and register in Windows <em>Add/Remove Programs</em>, simply run <code>Install.bat</code> once as an administrator.</p>
+      </div>
+
+      <!-- Pagination Navigation -->
+      <div class="page-nav-wrapper">
+        <div></div>
+        <a href="./getting-started.html" class="page-nav-card next">
+          <span class="page-nav-label">Next Step</span>
+          <span class="page-nav-title">
+            Getting Started & Installation
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </span>
+        </a>
+      </div>
+
+    </main>
+
+    <!-- Right Table of Contents -->
+    <aside class="toc-wrapper">
+      <div class="toc-title">On This Page</div>
+      <ul class="toc-list">
+        <li class="toc-item"><a href="#why-modeldock" class="toc-link">Why ModelDock?</a></li>
+        <li class="toc-item"><a href="#comparison" class="toc-link">Memory Footprint</a></li>
+        <li class="toc-item"><a href="#quick-install" class="toc-link">Quick 1-Click Launch</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="./index.html">Overview</a>
+      <a href="./getting-started.html">Installation</a>
+      <a href="./api-reference.html">API Reference</a>
+      <a href="./architecture.html">Architecture</a>
+      <a href="./faq.html">FAQ</a>
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+    <p>© 2026 ModelDock Project. Released under the Apache 2.0 License.</p>
+  </footer>
+
+  <script src="./js/main.js"></script>
+  <script src="./js/search.js"></script>
+</body>
+</html>

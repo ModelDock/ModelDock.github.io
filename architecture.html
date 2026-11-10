@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architecture & System Design | ModelDock Documentation</title>
+  <meta name="description" content="Technical architecture, directory structure, async execution loops, and standalone engine lifecycle in ModelDock.">
+  <link rel="icon" type="image/svg+xml" href="./assets/images/logo.svg">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/prism.css">
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header class="top-header">
+    <div class="brand-wrapper">
+      <button id="menu-toggle" class="icon-btn menu-toggle" aria-label="Toggle navigation menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <a href="./index.html" style="display:flex;align-items:center;gap:0.75rem;text-decoration:none;">
+        <img src="./assets/images/logo.svg" alt="ModelDock Logo" class="brand-logo">
+        <span class="brand-title">ModelDock <span class="brand-badge">v1.0.0</span></span>
+      </a>
+    </div>
+
+    <div class="header-center">
+      <button class="search-trigger" aria-label="Search Documentation">
+        <div class="search-trigger-content">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span>Search documentation...</span>
+        </div>
+        <kbd class="kbd-shortcut">Ctrl K</kbd>
+      </button>
+    </div>
+
+    <div class="header-actions">
+      <a href="./getting-started.html" class="nav-link">Get Started</a>
+      <a href="./api-reference.html" class="nav-link">API</a>
+      <button id="theme-toggle" class="icon-btn" title="Toggle color theme">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="icon-btn" title="GitHub Repository">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
+
+  <!-- Documentation Layout -->
+  <div class="doc-container">
+    
+    <!-- Left Navigation Sidebar -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-group">
+        <div class="sidebar-heading">Getting Started</div>
+        <ul class="sidebar-list">
+          <li class="sidebar-item"><a href="./index.html" class="sidebar-link">Overview & Intro</a></li>
+          <li class="sidebar-item"><a href="./getting-started.html" class="sidebar-link">Quick Start & Install</a></li>
+          <li class="sidebar-item"><a href="./features.html" class="sidebar-link">Core Features</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-group">
+        <div class="sidebar-heading">Model Engine & Hub</div>
+        <ul class="sidebar-list">
+          <li class="sidebar-item"><a href="./model-hub.html" class="sidebar-link">Model Hub & Downloads</a></li>
+          <li class="sidebar-item"><a href="./hardware-acceleration.html" class="sidebar-link">Hardware Acceleration</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-group">
+        <div class="sidebar-heading">Developer API</div>
+        <ul class="sidebar-list">
+          <li class="sidebar-item"><a href="./api-reference.html" class="sidebar-link">OpenAI Local API (/v1)</a></li>
+          <li class="sidebar-item"><a href="./rest-endpoints.html" class="sidebar-link">REST Endpoints Reference</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-group">
+        <div class="sidebar-heading">Architecture & Support</div>
+        <ul class="sidebar-list">
+          <li class="sidebar-item"><a href="./architecture.html" class="sidebar-link active">Architecture & Design</a></li>
+          <li class="sidebar-item"><a href="./faq.html" class="sidebar-link">FAQ & Troubleshooting</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="doc-content">
+      <div class="doc-breadcrumbs">
+        <a href="./index.html">Docs</a>
+        <span>/</span>
+        <span>Architecture & Design</span>
+      </div>
+
+      <h1 class="doc-title">Architecture & System Design</h1>
+      <p class="doc-lead">
+        A deep architectural breakdown of ModelDock's asynchronous micro-backend, standalone llama.cpp process supervisor, and native Windows WebView2 container.
+      </p>
+
+      <!-- System Architecture Overview -->
+      <h2 id="overview">System Architecture</h2>
+      <p>
+        ModelDock is partitioned into decoupled layers to maintain responsiveness, low resource utilization, and crash isolation:
+      </p>
+
+      <div class="code-block-wrapper">
+        <div class="code-header">
+          <span>Component Diagram (ASCII)</span>
+        </div>
+        <pre><code class="language-text">+---------------------------------------------------------------+
+|               Native Edge WebView2 Desktop Shell              |
+|        (desktop_app.py / Win32 AppWindow / ~35 MB RAM)        |
++-------------------------------+-------------------------------+
+                                | HTTP & WebSocket (localhost)
+                                v
++---------------------------------------------------------------+
+|                   FastAPI Async Server (run.py)               |
+|   OpenAI /v1 API  |  System Telemetry  |  Streaming SSE Hub   |
++---------------+---------------+---------------+---------------+
+                |               |               |
+                v               v               v
++---------------+--+  +---------+----+  +-------+---------------+
+| Download Manager |  | GGUF Parser  |  | Engine Supervisor     |
+| (HTTP Range      |  | (Metadata    |  | (core/engine_manager) |
+|  Chunk Streams)  |  |  Inspector)  |  |                       |
++------------------+  +--------------+  +-------+---------------+
+                                                |
+                                                v Process Spawn
+                                        +-------+---------------+
+                                        | Standalone llama.cpp  |
+                                        | (bin/llama-server.exe)|
+                                        |   CUDA / AVX2 Engine  |
+                                        +-----------------------+</code></pre>
+      </div>
+
+      <!-- Core Modules Breakdown -->
+      <h2 id="modules">Core Subsystems</h2>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Module File</th>
+              <th>Responsibility</th>
+              <th>Key Implementation Detail</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>run.py</code></td>
+              <td>FastAPI Core App & Routes</td>
+              <td>Non-blocking ASGI event loop, CORS middleware, and OpenAI <code>/v1</code> proxy routes.</td>
+            </tr>
+            <tr>
+              <td><code>desktop_app.py</code></td>
+              <td>Edge WebView2 Shell</td>
+              <td>Spawns the local webview with native window handles, custom icon, and graceful shutdown signal handlers.</td>
+            </tr>
+            <tr>
+              <td><code>core/engine_manager.py</code></td>
+              <td>Process Controller</td>
+              <td>Manages the lifecycle of <code>bin/llama-server.exe</code>, monitors port health, and frees VRAM on unload.</td>
+            </tr>
+            <tr>
+              <td><code>core/downloader.py</code></td>
+              <td>Chunked Downloader</td>
+              <td>Performs byte-range requests with pause/resume support, SHA256 integrity verification, and layered chunks.</td>
+            </tr>
+            <tr>
+              <td><code>core/hf_hub.py</code></td>
+              <td>Hugging Face Hub Client</td>
+              <td>Direct queries to HF API, file tree parsing, and token authentication for gated model access.</td>
+            </tr>
+            <tr>
+              <td><code>core/gguf_parser.py</code></td>
+              <td>Binary GGUF Header Parser</td>
+              <td>Reads binary tensor metadata, quantization format, and context length directly without loading full weights into RAM.</td>
+            </tr>
+            <tr>
+              <td><code>core/system_monitor.py</code></td>
+              <td>System Telemetry</td>
+              <td>Zero-overhead memory, CPU percentage, and NVIDIA NVML GPU VRAM telemetry reporting.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Concurrency & Process Lifecycle -->
+      <h2 id="lifecycle">Process Lifecycle & Memory Safety</h2>
+      <p>
+        To prevent memory leaks and zombie processes:
+      </p>
+      <ul>
+        <li><strong>Crash Isolation:</strong> The heavy C++ inference engine runs as an independent OS subprocess (<code>llama-server.exe</code>). If a model triggers an out-of-memory (OOM) error, the Python server and UI remain fully operational.</li>
+        <li><strong>Graceful Teardown:</strong> When the desktop window or browser server is terminated, a Windows <code>SIGTERM/SIGINT</code> handler terminates any active engine subprocesses before exiting.</li>
+        <li><strong>VRAM Purging:</strong> Switching models triggers an explicit shutdown of the active engine instance, resetting CUDA memory allocators before the new model is loaded into VRAM.</li>
+      </ul>
+
+      <!-- Pagination Navigation -->
+      <div class="page-nav-wrapper">
+        <a href="./rest-endpoints.html" class="page-nav-card prev">
+          <span class="page-nav-label">Previous Step</span>
+          <span class="page-nav-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            REST Endpoints Reference
+          </span>
+        </a>
+        <a href="./faq.html" class="page-nav-card next">
+          <span class="page-nav-label">Next Step</span>
+          <span class="page-nav-title">
+            FAQ & Troubleshooting
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </span>
+        </a>
+      </div>
+
+    </main>
+
+    <!-- Right Table of Contents -->
+    <aside class="toc-wrapper">
+      <div class="toc-title">On This Page</div>
+      <ul class="toc-list">
+        <li class="toc-item"><a href="#overview" class="toc-link">System Architecture</a></li>
+        <li class="toc-item"><a href="#modules" class="toc-link">Core Subsystems</a></li>
+        <li class="toc-item"><a href="#lifecycle" class="toc-link">Process Lifecycle</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="./index.html">Overview</a>
+      <a href="./getting-started.html">Installation</a>
+      <a href="./api-reference.html">API Reference</a>
+      <a href="./architecture.html">Architecture</a>
+      <a href="./faq.html">FAQ</a>
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+    <p>© 2026 ModelDock Project. Released under the Apache 2.0 License.</p>
+  </footer>
+
+  <script src="./js/main.js"></script>
+  <script src="./js/search.js"></script>
+</body>
+</html>

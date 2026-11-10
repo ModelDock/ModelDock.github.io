@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Model Hub & Downloads | ModelDock Documentation</title>
+  <meta name="description" content="Discover, search, and download models from Hugging Face Hub and Ollama. Quantization guides, gated models, and 1-click local GGUF imports.">
+  <link rel="icon" type="image/svg+xml" href="./assets/images/logo.svg">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/prism.css">
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header class="top-header">
+    <div class="brand-wrapper">
+      <button id="menu-toggle" class="icon-btn menu-toggle" aria-label="Toggle navigation menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <a href="./index.html" style="display:flex;align-items:center;gap:0.75rem;text-decoration:none;">
+        <img src="./assets/images/logo.svg" alt="ModelDock Logo" class="brand-logo">
+        <span class="brand-title">ModelDock <span class="brand-badge">v1.0.0</span></span>
+      </a>
+    </div>
+
+    <div class="header-center">
+      <button class="search-trigger" aria-label="Search Documentation">
+        <div class="search-trigger-content">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span>Search documentation...</span>
+        </div>
+        <kbd class="kbd-shortcut">Ctrl K</kbd>
+      </button>
+    </div>
+
+    <div class="header-actions">
+      <a href="./getting-started.html" class="nav-link">Get Started</a>
+      <a href="./api-reference.html" class="nav-link">API</a>
+      <button id="theme-toggle" class="icon-btn" title="Toggle color theme">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="icon-btn" title="GitHub Repository">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
+
+  <!-- Documentation Layout -->
+  <div class="doc-container">
+    
+    <!-- Left Navigation Sidebar -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-group">
+        <div class="sidebar-heading">Getting Started</div>
+        <ul class="sidebar-list">
+          <li class="sidebar-item"><a href="./index.html" class="sidebar-link">Overview & Intro</a></li>
+          <li class="sidebar-item"><a href="./getting-started.html" class="sidebar-link">Quick Start & Install</a></li>
+          <li class="sidebar-item"><a href="./features.html" class="sidebar-link">Core Features</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-group">
+        <div class="sidebar-heading">Model Engine & Hub</div>
+        <ul class="sidebar-list">
+          <li class="sidebar-item"><a href="./model-hub.html" class="sidebar-link active">Model Hub & Downloads</a></li>
+          <li class="sidebar-item"><a href="./hardware-acceleration.html" class="sidebar-link">Hardware Acceleration</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-group">
+        <div class="sidebar-heading">Developer API</div>
+        <ul class="sidebar-list">
+          <li class="sidebar-item"><a href="./api-reference.html" class="sidebar-link">OpenAI Local API (/v1)</a></li>
+          <li class="sidebar-item"><a href="./rest-endpoints.html" class="sidebar-link">REST Endpoints Reference</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-group">
+        <div class="sidebar-heading">Architecture & Support</div>
+        <ul class="sidebar-list">
+          <li class="sidebar-item"><a href="./architecture.html" class="sidebar-link">Architecture & Design</a></li>
+          <li class="sidebar-item"><a href="./faq.html" class="sidebar-link">FAQ & Troubleshooting</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="doc-content">
+      <div class="doc-breadcrumbs">
+        <a href="./index.html">Docs</a>
+        <span>/</span>
+        <span>Model Hub & Downloads</span>
+      </div>
+
+      <h1 class="doc-title">Model Hub & Downloads</h1>
+      <p class="doc-lead">
+        Search Hugging Face Hub, understand quantization formats, authenticate gated model access, and pull from the Ollama model library.
+      </p>
+
+      <!-- Hugging Face Hub Integration -->
+      <h2 id="huggingface">1. Hugging Face Hub Live Search</h2>
+      <p>
+        ModelDock connects directly to the official Hugging Face Hub REST API with zero proxy latency. In the <strong>Hub</strong> tab, you can search for any model creator or architecture (e.g., <code>meta-llama</code>, <code>Qwen</code>, <code>bartowski</code>, <code>mistralai</code>, <code>google/gemma-2</code>):
+      </p>
+      <ul>
+        <li><strong>Automatic GGUF Filtering:</strong> ModelDock identifies repos containing <code>.gguf</code> weights.</li>
+        <li><strong>File Tree Inspection:</strong> Expands and presents all available quantization files with their exact file sizes (e.g. <code>model-q4_k_m.gguf</code> (4.37 GB)).</li>
+        <li><strong>1-Click Download:</strong> Clicking download streams the file directly into your configured <code>downloads/</code> folder with instant telemetry.</li>
+      </ul>
+
+      <!-- Quantization Guide -->
+      <h2 id="quantization">2. Understanding Quantization Tiers</h2>
+      <p>
+        GGUF files are quantized to reduce memory usage and increase inference tokens-per-second with minimal loss in reasoning capability:
+      </p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Quantization</th>
+              <th>Bits / Weight</th>
+              <th>VRAM Required (7B)</th>
+              <th>Perplexity / Quality</th>
+              <th>Best Use Case</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Q4_K_M</strong></td>
+              <td>~4.5 bpw</td>
+              <td>~4.5 GB</td>
+              <td><span style="color:var(--accent-emerald);">Near-baseline (&lt;0.1% loss)</span></td>
+              <td><strong>Recommended Default:</strong> Ideal balance of speed, RAM, and intelligence.</td>
+            </tr>
+            <tr>
+              <td><strong>Q5_K_M</strong></td>
+              <td>~5.5 bpw</td>
+              <td>~5.6 GB</td>
+              <td><span style="color:var(--accent-emerald);">Near-perfect</span></td>
+              <td>Enhanced reasoning for complex math and code generation tasks.</td>
+            </tr>
+            <tr>
+              <td><strong>Q8_0</strong></td>
+              <td>8.0 bpw</td>
+              <td>~8.5 GB</td>
+              <td><span style="color:var(--accent-blue);">Indistinguishable from FP16</span></td>
+              <td>Maximum precision for production evaluation and research benchmarks.</td>
+            </tr>
+            <tr>
+              <td><strong>Q3_K_M</strong></td>
+              <td>~3.4 bpw</td>
+              <td>~3.8 GB</td>
+              <td><span style="color:var(--accent-amber);">Noticeable degradation</span></td>
+              <td>Low-spec hardware (8 GB system RAM or 4 GB VRAM laptops).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Gated Models & Hugging Face Tokens -->
+      <h2 id="gated-models">3. Gated Models & Hugging Face Auth</h2>
+      <p>
+        Leading frontier weights like <strong>Meta Llama 3.1 / 3.2</strong> and <strong>Google Gemma 2</strong> require agreeing to their license agreement on Hugging Face before downloading.
+      </p>
+      <p>
+        To access gated models in ModelDock:
+      </p>
+      <ol>
+        <li>Create or log into your account at <a href="https://huggingface.co" target="_blank" rel="noopener noreferrer">huggingface.co</a>.</li>
+        <li>Accept the terms on the model's official repository (e.g. <code>meta-llama/Llama-3.2-3B-Instruct</code>).</li>
+        <li>Generate a User Access Token (Read permissions) at <a href="https://huggingface.co/settings/tokens" target="_blank" rel="noopener noreferrer">huggingface.co/settings/tokens</a>.</li>
+        <li>In ModelDock, navigate to <strong>Settings &rarr; Auth & Keys</strong>, paste your token (starts with <code>hf_...</code>), and click <strong>Verify & Save</strong>.</li>
+      </ol>
+
+      <div class="callout callout-info">
+        <div class="callout-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          Token Security
+        </div>
+        <p>Your access token is stored locally in <code>config.json</code> on your machine and is never sent to third-party tracking services or external servers—only directly to Hugging Face's HTTPS endpoints.</p>
+      </div>
+
+      <!-- Ollama Registry Pulls -->
+      <h2 id="ollama">4. Ollama Registry Pulling</h2>
+      <p>
+        ModelDock also supports pulling models directly by their Ollama tag:
+      </p>
+      <ul>
+        <li>Enter any popular tag in the Hub search bar, such as:
+          <code>mistral:latest</code>, <code>qwen2.5:7b</code>, <code>deepseek-r1:8b</code>, <code>phi3:mini</code>.
+        </li>
+        <li>ModelDock delegates the layered download to the engine and monitors chunk transfer progress.</li>
+      </ul>
+
+      <!-- 1-Click Local GGUF Import -->
+      <h2 id="local-import">5. 1-Click Local GGUF Import</h2>
+      <p>
+        Already have <code>.gguf</code> files stored on your hard drive or an external SSD? You do not need to re-download or duplicate them:
+      </p>
+      <ol>
+        <li>Go to the <strong>Models</strong> tab.</li>
+        <li>Click <strong>Import Local .GGUF</strong>.</li>
+        <li>Select your <code>.gguf</code> file.</li>
+        <li>ModelDock inspects the file header, parses metadata (context length, architecture, tensor format), and instantly docks it into your local model library!</li>
+      </ol>
+
+      <!-- Pagination Navigation -->
+      <div class="page-nav-wrapper">
+        <a href="./features.html" class="page-nav-card prev">
+          <span class="page-nav-label">Previous Step</span>
+          <span class="page-nav-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Core Features
+          </span>
+        </a>
+        <a href="./hardware-acceleration.html" class="page-nav-card next">
+          <span class="page-nav-label">Next Step</span>
+          <span class="page-nav-title">
+            Hardware Acceleration & CUDA
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </span>
+        </a>
+      </div>
+
+    </main>
+
+    <!-- Right Table of Contents -->
+    <aside class="toc-wrapper">
+      <div class="toc-title">On This Page</div>
+      <ul class="toc-list">
+        <li class="toc-item"><a href="#huggingface" class="toc-link">1. HF Hub Live Search</a></li>
+        <li class="toc-item"><a href="#quantization" class="toc-link">2. Quantization Tiers</a></li>
+        <li class="toc-item"><a href="#gated-models" class="toc-link">3. Gated Models & Auth</a></li>
+        <li class="toc-item"><a href="#ollama" class="toc-link">4. Ollama Registry</a></li>
+        <li class="toc-item"><a href="#local-import" class="toc-link">5. Local GGUF Import</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="./index.html">Overview</a>
+      <a href="./getting-started.html">Installation</a>
+      <a href="./api-reference.html">API Reference</a>
+      <a href="./architecture.html">Architecture</a>
+      <a href="./faq.html">FAQ</a>
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+    <p>© 2026 ModelDock Project. Released under the Apache 2.0 License.</p>
+  </footer>
+
+  <script src="./js/main.js"></script>
+  <script src="./js/search.js"></script>
+</body>
+</html>

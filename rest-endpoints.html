@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REST Endpoints Reference | ModelDock Documentation</title>
+  <meta name="description" content="Complete REST API reference for ModelDock Studio: telemetry, models, downloads, authentication, and chat streaming.">
+  <link rel="icon" type="image/svg+xml" href="./assets/images/logo.svg">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/prism.css">
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header class="top-header">
+    <div class="brand-wrapper">
+      <button id="menu-toggle" class="icon-btn menu-toggle" aria-label="Toggle navigation menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <a href="./index.html" style="display:flex;align-items:center;gap:0.75rem;text-decoration:none;">
+        <img src="./assets/images/logo.svg" alt="ModelDock Logo" class="brand-logo">
+        <span class="brand-title">ModelDock <span class="brand-badge">v1.0.0</span></span>
+      </a>
+    </div>
+
+    <div class="header-center">
+      <button class="search-trigger" aria-label="Search Documentation">
+        <div class="search-trigger-content">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span>Search documentation...</span>
+        </div>
+        <kbd class="kbd-shortcut">Ctrl K</kbd>
+      </button>
+    </div>
+
+    <div class="header-actions">
+      <a href="./getting-started.html" class="nav-link">Get Started</a>
+      <a href="./api-reference.html" class="nav-link">API</a>
+      <button id="theme-toggle" class="icon-btn" title="Toggle color theme">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="icon-btn" title="GitHub Repository">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
+
+  <!-- Documentation Layout -->
+  <div class="doc-container">
+    
+    <!-- Left Navigation Sidebar -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-group">
+        <div class="sidebar-heading">Getting Started</div>
+        <ul class="sidebar-list">
+          <li class="sidebar-item"><a href="./index.html" class="sidebar-link">Overview & Intro</a></li>
+          <li class="sidebar-item"><a href="./getting-started.html" class="sidebar-link">Quick Start & Install</a></li>
+          <li class="sidebar-item"><a href="./features.html" class="sidebar-link">Core Features</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-group">
+        <div class="sidebar-heading">Model Engine & Hub</div>
+        <ul class="sidebar-list">
+          <li class="sidebar-item"><a href="./model-hub.html" class="sidebar-link">Model Hub & Downloads</a></li>
+          <li class="sidebar-item"><a href="./hardware-acceleration.html" class="sidebar-link">Hardware Acceleration</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-group">
+        <div class="sidebar-heading">Developer API</div>
+        <ul class="sidebar-list">
+          <li class="sidebar-item"><a href="./api-reference.html" class="sidebar-link">OpenAI Local API (/v1)</a></li>
+          <li class="sidebar-item"><a href="./rest-endpoints.html" class="sidebar-link active">REST Endpoints Reference</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-group">
+        <div class="sidebar-heading">Architecture & Support</div>
+        <ul class="sidebar-list">
+          <li class="sidebar-item"><a href="./architecture.html" class="sidebar-link">Architecture & Design</a></li>
+          <li class="sidebar-item"><a href="./faq.html" class="sidebar-link">FAQ & Troubleshooting</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="doc-content">
+      <div class="doc-breadcrumbs">
+        <a href="./index.html">Docs</a>
+        <span>/</span>
+        <span>Developer API</span>
+        <span>/</span>
+        <span>REST Endpoints Reference</span>
+      </div>
+
+      <h1 class="doc-title">REST Endpoints Reference</h1>
+      <p class="doc-lead">
+        Comprehensive specification of ModelDock Studio's internal REST API endpoints for monitoring, model catalog control, downloads, and chat streaming.
+      </p>
+
+      <!-- System Telemetry -->
+      <h2 id="system">System & Telemetry</h2>
+      <p><code>GET /api/system/status</code></p>
+      <p>Returns live real-time hardware metrics for CPU, RAM, and GPU VRAM.</p>
+
+      <div class="code-block-wrapper">
+        <div class="code-header">
+          <span>Response JSON (200 OK)</span>
+        </div>
+        <pre><code class="language-json">{
+  "app_ram_mb": 34.8,
+  "app_cpu_percent": 0.0,
+  "system_ram": {
+    "total_gb": 31.9,
+    "available_gb": 22.4,
+    "used_percent": 29.8
+  },
+  "gpu": {
+    "detected": true,
+    "name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+    "vram_total_mb": 8188,
+    "vram_free_mb": 6240,
+    "vram_used_mb": 1948
+  }
+}</code></pre>
+      </div>
+
+      <!-- Settings & Config -->
+      <h2 id="settings">Settings & Configuration</h2>
+      
+      <h3>1. Get Configuration</h3>
+      <p><code>GET /api/settings</code> or <code>GET /api/config</code></p>
+      <p>Retrieves user preferences and configuration with sensitive Hugging Face tokens masked.</p>
+
+      <h3>2. Update Configuration</h3>
+      <p><code>POST /api/settings/update</code></p>
+      <div class="code-block-wrapper">
+        <div class="code-header">
+          <span>Request Body JSON</span>
+        </div>
+        <pre><code class="language-json">{
+  "cpu_threads": 8,
+  "gpu_mode": "cuda",
+  "gpu_layers": 33,
+  "default_temperature": 0.7,
+  "default_context_length": 4096,
+  "system_prompt": "You are a helpful coding assistant."
+}</code></pre>
+      </div>
+
+      <!-- Downloads API -->
+      <h2 id="downloads">Download Manager Endpoints</h2>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Endpoint</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>GET</code></td>
+              <td><code>/api/downloads/status</code></td>
+              <td>Returns state, speed, percentage, and bytes for all active tasks.</td>
+            </tr>
+            <tr>
+              <td><code>POST</code></td>
+              <td><code>/api/downloads/pause</code></td>
+              <td>Pauses an ongoing download cleanly, preserving HTTP Range offset.</td>
+            </tr>
+            <tr>
+              <td><code>POST</code></td>
+              <td><code>/api/downloads/resume</code></td>
+              <td>Resumes an active paused download without redownloading bytes.</td>
+            </tr>
+            <tr>
+              <td><code>POST</code></td>
+              <td><code>/api/downloads/cancel</code></td>
+              <td>Cancels download task and purges temporary files.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Model Catalog Endpoints -->
+      <h2 id="models">Model Catalog Endpoints</h2>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Endpoint</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>GET</code></td>
+              <td><code>/api/models/list</code></td>
+              <td>Returns all docked models with parameter size, quant format, and path.</td>
+            </tr>
+            <tr>
+              <td><code>POST</code></td>
+              <td><code>/api/models/import-local</code></td>
+              <td>Docks an existing local <code>.gguf</code> file into ModelDock catalog.</td>
+            </tr>
+            <tr>
+              <td><code>DELETE</code></td>
+              <td><code>/api/models/delete</code></td>
+              <td>Un-docks and deletes local model weights from disk.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Chat & Streaming -->
+      <h2 id="chat">Chat Streaming Endpoint</h2>
+      <p><code>POST /api/chat/stream</code></p>
+      <p>
+        Streams tokens using Server-Sent Events (SSE). Emits generation telemetry once completion concludes.
+      </p>
+
+      <div class="code-block-wrapper">
+        <div class="code-header">
+          <span>Request JSON</span>
+        </div>
+        <pre><code class="language-json">{
+  "model": "Llama-3.2-3B-Instruct-Q4_K_M.gguf",
+  "messages": [
+    {"role": "user", "content": "Explain recursion in one sentence."}
+  ],
+  "temperature": 0.7,
+  "num_ctx": 4096
+}</code></pre>
+      </div>
+
+      <!-- Pagination Navigation -->
+      <div class="page-nav-wrapper">
+        <a href="./api-reference.html" class="page-nav-card prev">
+          <span class="page-nav-label">Previous Step</span>
+          <span class="page-nav-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            OpenAI Local API (/v1)
+          </span>
+        </a>
+        <a href="./architecture.html" class="page-nav-card next">
+          <span class="page-nav-label">Next Step</span>
+          <span class="page-nav-title">
+            Architecture & Design
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </span>
+        </a>
+      </div>
+
+    </main>
+
+    <!-- Right Table of Contents -->
+    <aside class="toc-wrapper">
+      <div class="toc-title">On This Page</div>
+      <ul class="toc-list">
+        <li class="toc-item"><a href="#system" class="toc-link">System & Telemetry</a></li>
+        <li class="toc-item"><a href="#settings" class="toc-link">Settings & Config</a></li>
+        <li class="toc-item"><a href="#downloads" class="toc-link">Download Endpoints</a></li>
+        <li class="toc-item"><a href="#models" class="toc-link">Model Catalog</a></li>
+        <li class="toc-item"><a href="#chat" class="toc-link">Chat Streaming</a></li>
+      </ul>
+    </aside>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="./index.html">Overview</a>
+      <a href="./getting-started.html">Installation</a>
+      <a href="./api-reference.html">API Reference</a>
+      <a href="./architecture.html">Architecture</a>
+      <a href="./faq.html">FAQ</a>
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+    <p>© 2026 ModelDock Project. Released under the Apache 2.0 License.</p>
+  </footer>
+
+  <script src="./js/main.js"></script>
+  <script src="./js/search.js"></script>
+</body>
+</html>
